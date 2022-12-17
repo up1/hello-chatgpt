@@ -1,0 +1,33 @@
+try to coding with go
+
+POST /v1/register
+
+Body Request in JSON format
+{
+"user": "demo",
+"password": "pass"
+}
+
+Return respose with HTTP Code = 200 and JSON data
+{
+	"message": "Register success"
+}
+
+and Error with HTTP code = 500
+{
+	"message": "Internal server error"
+}
+
+create function doRegister(req.User, req.Password) for insert data to mysql server
+replace with echo framework 
+api testing with echo framework
+isolate database from testing
+add service layer in code between main.go and database by use interface and struct
+try to api testing with mock service layer
+create Dockerfile for building docker image for this project
+please use docker build multi-stage to build Dockerfile and use go 1.19
+create docker-compose.yml to build project and mysql database
+change mysql to mysql master-slave
+try to provisioning project and mysql to digital ocean with terraform
+add step to deploy go project with docker in terraform
+change region to singapore
