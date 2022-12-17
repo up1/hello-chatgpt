@@ -1,0 +1,44 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+
+  master:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_REPLICATION_USER: repl
+      MYSQL_REPLICATION_PASSWORD: password
+    ports:
+      - "3306:3306"
+  slave:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_REPLICATION_USER: repl
+      MYSQL_REPLICATION_PASSWORD: password
+      MYSQL_REPLICATION_MASTER_HOST: master
+      MYSQL_REPLICATION_MASTER_USER: repl
+      MYSQL_REPLICATION_MASTER_PASSWORD: password
+    ports:
+      - "3307:3306"
